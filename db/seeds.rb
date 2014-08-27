@@ -5,6 +5,12 @@ GUIDES_DATA = [
 ['#where', 'Finds a bunch of stuff that you might have been looking for']
 ]
 
+CONTRIBUTORS_DATA = [
+
+]
+
+
+
 GUIDES_DATA.each do |guides|
   Guide.create!(name: guides[0], description: guides[1])
 end
