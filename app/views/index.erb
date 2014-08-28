@@ -1,0 +1,6 @@
+<div class='container'>
+  <h1>Active Record</h1>
+  <% Guide.all.each do |guide| %>
+    <a href='/<%= guide.name %>'><%= guide.name %></a>
+  <% end %>
+</div>
