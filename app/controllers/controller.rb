@@ -1,6 +1,8 @@
-require 'sinatra'
-require 'sinatra-session'
-
 get '/' do
-  index :erb
+  erb :index
+end
+
+get '/:guide_name' do
+  @guide = @Guide.find_by name: "#{params[:guide_name]}"
+  erb :guide
 end
