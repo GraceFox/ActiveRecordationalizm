@@ -23,7 +23,11 @@
 <% end %>
 
 <div class='container'>
-  <h1>Active Record</h1>
+  <form action='/query' method='post'>
+    <input type='text' name='guide_query' placeholder='Type your search'>
+    <input type='submit' value='Go'>
+  </form>
+  <h2>Active Record</h2>
   <% Guide.all.each do |guide| %>
     <a href='/<%= guide.name %>'><%= guide.name %></a>
   <% end %>

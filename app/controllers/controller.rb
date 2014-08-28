@@ -22,7 +22,13 @@ post '/log_in' do
   redirect to('/')
 end
 
+
 post '/log_out' do
   session[:user_id] = nil
   redirect to('/')
+end
+
+post '/query' do
+  @guide =Guide.find_by name: "#{params[:guide_query]}"
+  erb :guides
 end
