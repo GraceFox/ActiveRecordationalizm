@@ -132,3 +132,10 @@ task "console" do
 end
 
 task :default  => :spec
+
+desc 'Prepare test environment'
+task :test_prepare do
+  exec("DATABASE_URL='postgres://localhost/Ruby_test' rake db:drop &&
+        DATABASE_URL='postgres://localhost/Ruby_test' rake db:create &&
+        DATABASE_URL='postgres://localhost/Ruby_test' rake db:migrate")
+end
