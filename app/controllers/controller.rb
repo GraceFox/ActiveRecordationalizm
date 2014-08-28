@@ -20,7 +20,6 @@ post '/log_in' do
   else
       @error = "Your password is wrong. You can do better"
       @error.inspect
-
   end
   erb :index
 end
@@ -31,8 +30,13 @@ post '/log_out' do
 end
 
 post '/guide/query' do
-  @guide =Guide.find_by name: "#{params[:guide_query]}"
-  erb :guides
+  @guide =Guide.find_by(name: "#{params[:guide_query]}")
+  if @guide
+    erb :guides
+  else
+    @error = "We have no record of what you're looking for. "
+    erb :index
+  end
 end
 
 get '/new_guide' do
@@ -45,6 +49,18 @@ post '/new_guide/:new_post' do
   redirect to('/')
 end
 
-get '/error' do
-  erb :index
+get '/sign_up' do
+  erb :sign_up
 end
+
+post '/sign_up/' do
+  person_data = params["sign_up"]
+  new_contributor = Contributor.create(name: person_data[:name],email: person_data[:email],password: person_data[:password])
+  if new_contributor
+    session[:user_id] = new_contributor.id
+    redirect to('/')
+  else
+    erb :sign_up
+  end
+end
+

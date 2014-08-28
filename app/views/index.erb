@@ -8,15 +8,11 @@
     <input type='submit' id='submit' value='add thing'>
   </form>
   <a href="/new_guide">Add thing</a>
+
 <% else %>
 
   <div class = "log_in">
-      <h2>Sign in,  Friend!</h2>
-
-    <% if @error %>
-      <p><%=@error%></p>
-    <% end %>
-
+    <h2>Sign in,  Friend!</h2>
     <form action='/log_in' method='post'>
       <label for='user_name'>User name</label>
       <input type='text' id='user_name' name='log_in[user_name]'>
@@ -25,6 +21,18 @@
       <input type='submit' id='submit' value = 'Do it!'>
     </form>
   </div>
+
+  <div class="sign_up_button">
+    <a href="/sign_up">Become a contributor!</a>
+  </div>
+
+<% end %>
+
+<% if @error %>
+  <div class= "error">
+    <h3>Error!</h3>
+    <p><%=@error%></p>
+  </div>
 <% end %>
 
 <div class='container'>
@@ -32,6 +40,7 @@
     <input type='text' name='guide_query' placeholder='Type your search'>
     <input type='submit' value='Go'>
   </form>
+
   <h2>Active Record</h2>
   <% @all_topics.each do |topic| %>
     <h3><%= topic.name %></h3>
