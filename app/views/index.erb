@@ -1,3 +1,27 @@
+<% if session[:user_id] %>
+  <h2>Welcome, <%=Contributor.find(session[:user_id]).name %></h2>
+  <form action='/log_out' method ='post'>
+    <input type='submit' id='submit' value='logout'>
+  </form>
+<% else %>
+
+  <div class = "log_in">
+      <h2>Sign in,  Friend!</h2>
+
+    <% if @error %>
+      <p><%=@error%></p>
+    <% end %>
+
+    <form action='/log_in' method='post'>
+      <label for='user_name'>User name</label>
+      <input type='text' id='user_name' name='log_in[user_name]'>
+      <label for='password'>Password</label>
+      <input type='password' id='password' name='log_in[password]'>
+      <input type='submit' id='submit' value = 'Do it!'>
+    </form>
+  </div>
+<% end %>
+
 <div class='container'>
   <h1>Active Record</h1>
   <% Guide.all.each do |guide| %>
