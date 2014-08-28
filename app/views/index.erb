@@ -3,6 +3,11 @@
   <form action='/log_out' method ='post'>
     <input type='submit' id='submit' value='logout'>
   </form>
+
+  <form action='/new_guide' method ='get'>
+    <input type='submit' id='submit' value='add thing'>
+  </form>
+  <a href="/new_guide">Add thing</a>
 <% else %>
 
   <div class = "log_in">
@@ -23,12 +28,12 @@
 <% end %>
 
 <div class='container'>
-  <form action='/query' method='post'>
+  <form action='/guide/query' method='post'>
     <input type='text' name='guide_query' placeholder='Type your search'>
     <input type='submit' value='Go'>
   </form>
   <h2>Active Record</h2>
   <% Guide.all.each do |guide| %>
-    <a href='/<%= guide.name %>'><%= guide.name %></a>
+    <a href='/guide/<%= guide.name %>'><%= guide.name %></a>
   <% end %>
 </div>

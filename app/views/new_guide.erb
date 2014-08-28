@@ -1,0 +1,12 @@
+<%=puts "this page"%>
+<div class="new_guide">
+	<h1>Welcome</h1>
+  	<form action="/new_guide/new_post" method="post" >
+	    <label for='name'>Method Name</label>
+	    <input type='text' id='name' name='new_guide[name]'>
+	    <label for='description'>Description</label>
+	    <input type='text' id='description' name='new_guide[description]'>
+	    <input type='submit' id='submit' value='Post it!'>	    	    
+	</form>
+
+</div>
