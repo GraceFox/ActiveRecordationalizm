@@ -1,4 +1,5 @@
 get '/' do
+  @all_topics = Topic.all
   erb :index
 end
 

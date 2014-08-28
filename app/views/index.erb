@@ -33,7 +33,10 @@
     <input type='submit' value='Go'>
   </form>
   <h2>Active Record</h2>
-  <% Guide.all.each do |guide| %>
-    <a href='/guide/<%= guide.name %>'><%= guide.name %></a>
+  <% @all_topics.each do |topic| %>
+    <h3><%= topic.name %></h3>
+    <% topic.guides.each do |guide| %>
+      <a href='/guide/<%= guide.name %>'><%= guide.name %></a>
+    <% end %>
   <% end %>
 </div>
