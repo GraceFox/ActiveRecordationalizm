@@ -11,7 +11,7 @@ post '/log_in' do
   user = params["log_in"]
   @contributor = Contributor.find_by_name(user["user_name"])
   if @contributor == nil
-    @error = "Your user name isn't recognised here. Also, you're ugly"
+    @error = "Your user name isn't recognised here. Also, you're a special snowflake and I love you for what you are"
     @error.inspect
   elsif @contributor.is_password_valid(user["password"])
       session[:user_id] = @contributor.id

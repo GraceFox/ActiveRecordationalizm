@@ -2,7 +2,8 @@ GUIDES_DATA = [
 ['validates', 'Checks if a database item has valid information'],
 ['thing', 'Does a thing'],
 ['all', 'Comes up with a whole bunch of stuff'],
-['where', 'Finds a bunch of stuff that you might have been looking for']
+['where', 'Finds a bunch of stuff that you might have been looking for'],
+['security', 'How to lock your computer and why it is a good idea']
 ]
 
 CONTRIBUTORS_DATA = [
