@@ -2,5 +2,19 @@
   <h1><%= @guide.name %></h1>
   <p><%= @guide.explanation %></p>
   <a href='https://www.google.co.nz/?gws_rd=ssl#q=activerecord+<%= @guide.topic.name %>+<%= @guide.name %>'>Search on Google!</a>
-  <p><%= @guide.created_at %><%= @guide.updated_at %></p> 
+  <p><%= @guide.created_at %><%= @guide.updated_at %></p>
 </div>
+
+
+<%if session[:user_id]%>
+  <div class="like">
+    <form action="/guides/like/" method="post" >
+      <input type='submit' id='submit' value = 'Like!'>
+    </form>
+  </div>
+    <div class="dislike">
+    <form action="/guides/dislike/" method="post" >
+      <input type='submit' id='submit' value = 'Dislike!'>
+    </form>
+  </div>
+<%end%>
