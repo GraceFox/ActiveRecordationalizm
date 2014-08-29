@@ -58,10 +58,15 @@ end
 post '/sign_up/' do
   person_data = params["sign_up"]
   new_contributor = Contributor.create(name: person_data[:name],email: person_data[:email],password: person_data[:password])
-  if new_contributor
+   # puts new_contributor.valid?
+  if new_contributor.valid?
     session[:user_id] = new_contributor.id
     redirect to('/')
   else
+    @error = "Didn't pass validation"
+    if new_contributor.errors
+      @error = new_contributor.errors.messages #"Email address invalid"
+    end
     erb :sign_up
   end
 end
