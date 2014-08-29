@@ -1,4 +1,7 @@
 class Contributor < ActiveRecord::Base
+  has_many :contributor_guides
+  has_many :guides, through: :contributor_guides
+
   validates :email, uniqueness: true
   validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+/}
   validates :name, uniqueness: true

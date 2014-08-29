@@ -4,3 +4,16 @@
   <a href='https://www.google.co.nz/?gws_rd=ssl#q=activerecord+<%= @guide.topic.name %>+<%= @guide.name %>' target='_blank'>Get More Information</a>
   <p>Created <%= @guide.created_at %> Updated <%= @guide.updated_at %></p> 
 </div>
+
+<%if session[:user_id]%>
+  <div class="like">
+    <form action="/guides/like/" method="post" >
+      <input type='submit' id='submit' value = 'Like!'>
+    </form>
+  </div>
+    <div class="dislike">
+    <form action="/guides/dislike/" method="post" >
+      <input type='submit' id='submit' value = 'Dislike!'>
+    </form>
+  </div>
+<%end%>

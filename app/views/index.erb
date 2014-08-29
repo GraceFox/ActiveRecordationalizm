@@ -22,9 +22,11 @@
     </form>
   </div>
 
+<a href="/sign_up">
   <div class="sign_up_button">
-    <a href="/sign_up">Become a contributor!</a>
+    Become a contributor!
   </div>
+</a>
 
 <% end %>
 
@@ -45,7 +47,9 @@
   <% @all_topics.each do |topic| %>
     <h3><%= topic.name %></h3>
     <% topic.guides.each do |guide| %>
-      <a href='/guide/<%= guide.name %>'><%= guide.name %></a>
+      <ul>
+        <li><a href='/guide/<%= guide.name %>'><%= guide.name %></a></li>
+      </ul>
     <% end %>
   <% end %>
 </div>

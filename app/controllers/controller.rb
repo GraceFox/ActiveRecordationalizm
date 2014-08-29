@@ -5,6 +5,7 @@ end
 
 get '/guide/:guide_name' do
   @guide = Guide.find_by name: "#{params[:guide_name]}"
+  #@votecount = ContributorGuides.votecount(@guide.id)
   erb :guides
 end
 
@@ -48,6 +49,7 @@ end
 post '/new_guide/:new_post' do
   p params
   new_guide = params["new_guide"]
+
   new_topic = params["topic"]
   topic = Topic.find_by name: new_topic[:name]
   if topic
@@ -56,6 +58,9 @@ post '/new_guide/:new_post' do
     t = Topic.create(name: new_topic["name"])
     Guide.create(name: new_guide["name"], explanation: new_guide["explanation"], topic: t )
   end
+
+  # listing = Guide.create(name: new_guide["name"], explanation: new_guide["explanation"])
+  # ContributorGuides.create(contributor_id: session[:user_id], guide_id: listing.id )
   redirect to('/')
 end
 
@@ -79,3 +84,10 @@ post '/sign_up/' do
   end
 end
 
+post "/guides/dislike/" do
+  erb :guides
+end
+
+post "/guides/like/" do
+  erb :guides
+end
