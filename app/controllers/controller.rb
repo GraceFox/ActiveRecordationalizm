@@ -46,8 +46,16 @@ get '/new_guide' do
 end
 
 post '/new_guide/:new_post' do
+  p params
   new_guide = params["new_guide"]
-  Guide.create(name: new_guide["name"], description: new_guide["description"])
+  new_topic = params["topic"]
+  topic = Topic.find_by name: new_topic[:name]
+  if topic
+    Guide.create(name: new_guide["name"], explanation: new_guide["explanation"], topic: topic )
+  else
+    t = Topic.create(name: new_topic["name"])
+    Guide.create(name: new_guide["name"], explanation: new_guide["explanation"], topic: t )
+  end
   redirect to('/')
 end
 
