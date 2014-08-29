@@ -21,6 +21,7 @@ post '/log_in' do
       @error = "Your password is wrong. You can do better"
       @error.inspect
   end
+  @all_topics = Topic.all
   erb :index
 end
 
@@ -35,6 +36,7 @@ post '/guide/query' do
     erb :guides
   else
     @error = "We have no record of what you're looking for. "
+    @all_topics = Topic.all
     erb :index
   end
 end
