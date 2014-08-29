@@ -47,9 +47,20 @@ get '/new_guide' do
 end
 
 post '/new_guide/:new_post' do
+  p params
   new_guide = params["new_guide"]
-  listing = Guide.create(name: new_guide["name"], description: new_guide["description"])
-  ContributorGuides.create(contributor_id: session[:user_id], guide_id: listing.id )
+
+  new_topic = params["topic"]
+  topic = Topic.find_by name: new_topic[:name]
+  if topic
+    Guide.create(name: new_guide["name"], explanation: new_guide["explanation"], topic: topic )
+  else
+    t = Topic.create(name: new_topic["name"])
+    Guide.create(name: new_guide["name"], explanation: new_guide["explanation"], topic: t )
+  end
+
+  # listing = Guide.create(name: new_guide["name"], explanation: new_guide["explanation"])
+  # ContributorGuides.create(contributor_id: session[:user_id], guide_id: listing.id )
   redirect to('/')
 end
 
