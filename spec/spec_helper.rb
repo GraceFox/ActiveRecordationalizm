@@ -15,6 +15,10 @@ require 'capybara/rspec'
 
 RSpec.configure do |config|
   config.include Rack::Test::Methods
+
+  config.before do
+    Guide.destroy_all
+  end
 end
 
 def app
