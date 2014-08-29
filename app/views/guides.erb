@@ -1,5 +1,6 @@
 <div class='container'>
   <h1><%= @guide.name %></h1>
   <p><%= @guide.explanation %></p>
+  <a href='https://www.google.co.nz/?gws_rd=ssl#q=activerecord+<%= @guide.topic.name %>+<%= @guide.name %>'>Search on Google!</a>
   <p><%= @guide.created_at %><%= @guide.updated_at %></p> 
 </div>
