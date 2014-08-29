@@ -1,10 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-  
-  <title>Method Mate</title>title>
 
-</head>
 <body>
 <% if session[:user_id] %>
   <h2>Welcome, <%=Contributor.find(session[:user_id]).name %></h2>
