@@ -1,23 +1,12 @@
-GUIDES_DATA = [
-['validates', 'Checks if a database item has valid information'],
-['thing', 'Does a thing'],
-['all', 'Comes up with a whole bunch of stuff'],
-['where', 'Finds a bunch of stuff that you might have been looking for'],
-['security', 'How to lock your computer and why it is a good idea']
-]
+t1 = Topic.create(name: 'topic 1')
+t2 = Topic.create(name: 'topic 2')
 
-CONTRIBUTORS_DATA = [
-   ["steve",  "steve@example.com",  'ilovewearinghighheels' ],
-   ["grace",  "grace@example.com",  'ishimmyalot' ],
-   ["adam",  "adam@example.com",  'steveistheworst' ]
-]
+Guide.create(name: 'validates', explanation: 'Checks...', topic_id: t1.id)
+Guide.create(name: 'thing', explanation: 'Does a thing...', topic_id: t1.id)
+Guide.create(name: 'all', explanation: 'Comes up with...', topic_id: t1.id)
+Guide.create(name: 'where', explanation: 'Finds a bunch...', topic_id: t2.id)
+Guide.create(name: 'security', explanation: 'How to lock...', topic_id: t2.id)
 
-
-
-GUIDES_DATA.each do |guides|
-  Guide.create!(name: guides[0], description: guides[1])
-end
-
-CONTRIBUTORS_DATA.each do |contributor|
-  Contributor.create!(name: contributor[0], email: contributor[1], password: contributor[2])
-end
+Contributor.create(name: 'steve', email: 'steve@example.com', password: 's')
+Contributor.create(name: 'grace', email: 'grace@example.com', password: 'g')
+Contributor.create(name: 'adam', email: 'adam@example.com', password: 'a')
